@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111211">
+  <title>Pulso — Convierte el sonido en luz</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Pulso, inicio"><span class="brand-icon">◒</span> pulso<span class="brand-dot">.</span></a>
+    <span class="top-caption">SONIDO ENTRA. LUZ SALE.</span>
+    <span class="local-badge"><i></i> 100% en tu navegador</span>
+  </header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow"><span></span> EXPERIMENTO AUDIOREACTIVO / 001</p>
+      <h1>Tu música.<br>Hecha <span>luz.</span></h1>
+      <p class="description">Comparte el audio de tu música. Deja que los beats<br class="desktop-break"> transformen tu pantalla en luz y color.</p>
+    </section>
+    <section class="workspace" aria-label="Estudio de luz">
+      <div class="preview-wrap">
+        <div class="section-label"><span><i class="tiny-square"></i> VISTA PREVIA</span><span id="preview-state">EN ESPERA</span></div>
+        <div id="stage" class="stage" tabindex="-1" aria-label="Pantalla reactiva">
+          <div class="stage-grid"></div>
+          <div id="idle-art" class="idle-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orb"></div><span>ESCUCHA EL MOMENTO.</span></div>
+          <div id="waves" class="waves" aria-hidden="true"></div>
+          <div class="stage-top"><span id="stage-status"><i></i> SIN SEÑAL</span><span id="color-label">B / W</span></div>
+          <div class="stage-bottom"><span id="stage-hint">El próximo beat enciende todo.</span><button id="fullscreen" class="icon-button" title="Pantalla completa" aria-label="Entrar o salir de pantalla completa">⛶</button></div>
+          <p id="stage-feedback" class="stage-feedback" role="status">Para reanudar, acepta primero el aviso de luces en la vista normal.</p>
+          <button id="stage-stop" class="stage-stop" disabled aria-describedby="stage-feedback">▶ Reanudar audio</button>
+        </div>
+        <div class="meter-row"><span>ENTRADA DE AUDIO</span><div id="meter" class="meter" aria-hidden="true"></div><span id="level">0%</span></div>
+        <p id="message" class="message" role="status">Todo listo. Conecta tu música con la pantalla.</p>
+      </div>
+      <aside class="controls">
+        <div class="controls-heading"><h2>Ajusta el pulso</h2><span>↗</span></div>
+        <div class="control-block"><label for="audio-source">Fuente de audio</label><select id="audio-source" aria-describedby="source-help"><option value="device">Audio del dispositivo / pestaña</option><option value="mic">Micrófono</option></select><p id="source-help" class="control-help">Elige dónde suena la música y activa «Compartir audio». El navegador exige seleccionar pantalla o pestaña al iniciar; Pulso detiene la pista de imagen inmediatamente y conserva solo audio, sin grabarlo ni enviarlo.</p></div>
+        <div id="auto-controls"><div class="control-block"><label for="sensitivity">Sensibilidad <output id="sensitivity-value">70%</output></label><input id="sensitivity" type="range" min="0" max="100" value="70"><div class="range-labels"><span>Solo golpes fuertes</span><span>Más detalle</span></div></div>
+        <div class="control-block"><label for="cooldown">Pausa entre cambios <output id="cooldown-value">1 ms</output></label><input id="cooldown" type="range" min="1" max="1000" step="1" value="1"><div class="range-labels"><span>Más rápido</span><span>Más tranquilo</span></div><p class="control-help">Es la espera mínima entre golpes detectados. La velocidad visible depende de la pantalla; 1 ms puede producir destellos intensos.</p></div></div>
+        <fieldset class="control-block"><legend>Color</legend><div class="segmented"><button type="button" class="selected" data-color="bw" aria-pressed="true">◐ B/W</button><button type="button" data-color="rgb" aria-pressed="false">✺ RGB</button></div><p id="color-help" class="control-help">Ondas blancas sobre fondo negro.</p></fieldset>
+        <fieldset class="control-block"><legend>Comportamiento</legend><div class="segmented"><button type="button" data-mode="toggle" aria-pressed="false">◐ Alternar</button><button type="button" data-mode="flash" aria-pressed="false">ϟ Destello</button><button type="button" class="selected" data-mode="waves" aria-pressed="true">◎ Ondas</button></div><p class="control-help" id="mode-help">Cada beat lanza una onda desde el centro hacia los bordes.</p><button id="test-wave" class="test-wave" type="button" disabled>◎ Probar onda</button></fieldset>
+        <div class="stats"><div><span>BEATS</span><strong id="beats">000</strong></div><div><span id="bpm-label">BPM APROX.</span><strong id="bpm">—</strong></div><div><span>ENTRADA</span><strong id="mic-state" class="mic-state">Inactiva</strong></div></div>
+        <div class="safety"><span aria-hidden="true">△</span><div><strong>Esta experiencia usa luces intermitentes.</strong><p>Evítala si tienes fotosensibilidad. Empieza con una pausa larga y usa «Detener audio» para parar.</p><label class="consent"><input type="checkbox" id="consent"> Entiendo y quiero activar las luces.</label></div></div>
+        <button id="start" class="primary" disabled><span id="start-label">Capturar audio del dispositivo</span><span id="start-icon" aria-hidden="true">↗</span></button>
+        <p class="privacy">El audio se procesa aquí. No se graba ni se envía.</p>
+      </aside>
+    </section>
+    <footer><span>MENOS PANTALLA. MÁS RITMO.</span><span><kbd>Esc</kbd> para salir de pantalla completa <span class="footer-dot">·</span> Sigue los golpes de tu música</span></footer>
+  </main>
+  <script type="module" src="/app.mjs"></script>
+</body>
+</html>
