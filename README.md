@@ -24,6 +24,16 @@ La detección automática compara la energía de graves (40–220 Hz) con un pro
 
 **Luces intermitentes:** evita esta experiencia si tienes fotosensibilidad. La pausa entre cambios no garantiza que los destellos sean adecuados para ti.
 
+## Desplegar en Vercel
+
+La aplicación funciona completamente en el navegador. `server.mjs` se usa únicamente para desarrollo local; producción sirve archivos estáticos.
+
+```sh
+npm run build
+```
+
+El comando prepara `dist/` con los seis archivos de la aplicación, incluido el favicon. `vercel.json` fija el preset **Other**, el comando **npm run build** y el directorio de salida **dist**. Sube estos cambios al repositorio conectado y crea un nuevo despliegue. No uses `npm start` como comando de build ni ejecutes `server.mjs` como función de producción.
+
 ## Verificar
 
 ```sh

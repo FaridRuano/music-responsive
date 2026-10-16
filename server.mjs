@@ -2,6 +2,8 @@ import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 const files = new Map([
   ['/', ['index.html', 'text/html; charset=utf-8']],
+  ['/favicon.svg', ['favicon.svg', 'image/svg+xml']],
+  ['/favicon.ico', ['favicon.svg', 'image/svg+xml']],
   ['/style.css', ['style.css', 'text/css; charset=utf-8']],
   ['/app.mjs', ['app.mjs', 'text/javascript; charset=utf-8']],
   ['/detector.mjs', ['detector.mjs', 'text/javascript; charset=utf-8']],
